@@ -8,6 +8,8 @@ import android.view.Menu;
 //import android.database.sqlite;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 
 public class MainViewScreen extends ActionBarActivity {
@@ -16,6 +18,39 @@ public class MainViewScreen extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_view_screen);
+
+
+        //array of fake data
+
+        String[] fakeData =
+                new String[]{"Happy",
+                            "Sleepy",
+                            "Dopey",
+                            "Grumpy",
+                            "Doc",
+                            "Sneezy",
+                            "Bashful",
+                            "Thorin",
+                            "Fili",
+                            "Kili",
+                            "Balin",
+                            "Dwalin",
+                            "Oin",
+                            "Gloin",
+                            "Dori",
+                            "Nori",
+                            "Ori",
+                            "Bifur",
+                            "Bofur",
+                            "Bombur",
+                            "Dain"};
+
+        //create the adapter for fake data array
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, fakeData);
+
+        ListView listView = (ListView) findViewById(R.id.listView);
+        listView.setAdapter(adapter);
     }
 
     @Override

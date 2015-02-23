@@ -6,54 +6,6 @@
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainViewScreen"
     >
 
-    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:stretchColumns="1"
-        android:id="@+id/tableLayout"
-        android:layout_marginTop="210dp"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-        <TableRow>
-            <TextView
-                android:layout_column="1"
-                android:text="Open..."
-                android:padding="3dip" />
-            <TextView
-                android:text="Ctrl-O"
-                android:gravity="right"
-                android:padding="3dip" />
-        </TableRow>
-
-        <TableRow>
-            <TextView
-                android:layout_column="1"
-                android:text="Save..."
-                android:padding="3dip" />
-            <TextView
-                android:text="Ctrl-S"
-                android:gravity="right"
-                android:padding="3dip" />
-        </TableRow>
-
-        <TableRow>
-            <TextView
-                android:layout_column="1"
-                android:text="Save As..."
-                android:padding="3dip" />
-            <TextView
-                android:text="Ctrl-Shift-S"
-                android:gravity="right"
-                android:padding="3dip" />
-        </TableRow>
-
-        <View
-            android:layout_height="2dip"
-            android:background="#FF000000"
-            android:layout_column="1"
-            android:layout_span="2" />
-    </TableLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -64,6 +16,14 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="17dp" />
 
 
 </RelativeLayout>
