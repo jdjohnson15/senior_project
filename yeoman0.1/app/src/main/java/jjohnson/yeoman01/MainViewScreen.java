@@ -1,6 +1,10 @@
 package jjohnson.yeoman01;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.support.v4.app.DialogFragment;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,16 +12,19 @@ import android.view.Menu;
 //import android.database.sqlite;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 
-public class MainViewScreen extends ActionBarActivity {
+public class MainViewScreen extends ActionBarActivity implements AdapterView.OnItemClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_view_screen);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
 
         //array of fake data
@@ -49,8 +56,10 @@ public class MainViewScreen extends ActionBarActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, fakeData);
 
-        ListView listView = (ListView) findViewById(R.id.listView);
+        ListView listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(this);
     }
 
     @Override
@@ -78,9 +87,20 @@ public class MainViewScreen extends ActionBarActivity {
                 intent = new Intent(this, effectList.class);
                 startActivity(intent);
                 return true;
+            case R.id.timer:
+                DialogFragment alert = new timerAlert();
+                alert.show(getSupportFragmentManager(), "timer alert");
+                return true;
         }
         return true;
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        DialogFragment alert = new mainViewAlert();
 
+        alert.show(getSupportFragmentManager(), "main alert");
+    }
 }
+
+
