@@ -1,15 +1,16 @@
 package jjohnson.yeoman01;
 
+
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
-//import android.database;
-//import android.database.sqlite;
+import android.database.sqlite.*;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -26,11 +27,21 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
+        // Database Stuff
+
+        SQLiteDatabase yeomanDB = openOrCreateDatabase("Yeoman",MODE_PRIVATE,null);
+        yeomanDB.execSQL("CREATE TABLE IF NOT EXISTS Character(Name VARCHAR,str INT);");
+        yeomanDB.execSQL("INSERT INTO Character VALUES('Kasgar','50');");
+
+        Cursor resultSet = yeomanDB.rawQuery("Select Name from Character",null);
+        resultSet.moveToFirst();
+        String name = resultSet.getString(0);
+
 
         //array of fake data
 
         String[] fakeData =
-                new String[]{"Happy",
+                new String[]{name,
                             "Sleepy",
                             "Dopey",
                             "Grumpy",
