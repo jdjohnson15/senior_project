@@ -65,7 +65,7 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
 
         //create the adapter for fake data array
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, fakeData);
+                android.R.layout.simple_list_item_1, R.id.name, fakeData);
 
         ListView listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(adapter);
