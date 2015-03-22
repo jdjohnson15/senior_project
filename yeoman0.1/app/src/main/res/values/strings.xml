@@ -5,8 +5,7 @@
     <string name="action_settings">Settings</string>
     <string name="name">name</string>
     <string name="att1">yeoman0.1</string>
-    <string name="thing">thing</string>
-    <string name="titleView">Entity List</string>
+    <string name="main_view_title">Entity List</string>
     <string name="title_activity_edit_entity">editEntity</string>
     <string name="hello_world">Hello world!</string>
     <string name="edit_Entity">Create Entity</string>
@@ -14,5 +13,7 @@
     <string name="effect_List">See All Effects</string>
     <string name="title_activity_edit_effect">editEffect</string>
     <string name="title_activity_effect_list">effectList</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="timer">Next Turn</string>
 
 </resources>

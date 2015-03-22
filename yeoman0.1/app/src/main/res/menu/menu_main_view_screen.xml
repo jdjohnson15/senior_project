@@ -9,5 +9,7 @@
         android:title="@string/edit_Effect"/>
     <item android:id="@+id/effectList"
         android:title="@string/effect_List"/>
+    <item android:id="@+id/timer"
+        android:title="@string/timer"/>
 
 </menu>
