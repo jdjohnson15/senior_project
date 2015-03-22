@@ -1,15 +1,16 @@
 package jjohnson.yeoman01;
 
+
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
-//import android.database;
-//import android.database.sqlite;
+import android.database.sqlite.*;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -26,11 +27,21 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
+        // Database Stuff
+
+        SQLiteDatabase yeomanDB = openOrCreateDatabase("Yeoman",MODE_PRIVATE,null);
+        yeomanDB.execSQL("CREATE TABLE IF NOT EXISTS Character(Name VARCHAR,str INT);");
+        yeomanDB.execSQL("INSERT INTO Character VALUES('Kasgar','50');");
+
+        Cursor resultSet = yeomanDB.rawQuery("Select Name from Character",null);
+        resultSet.moveToFirst();
+        String name = resultSet.getString(0);
+
 
         //array of fake data
 
         String[] fakeData =
-                new String[]{"Happy",
+                new String[]{name,
                             "Sleepy",
                             "Dopey",
                             "Grumpy",
@@ -73,22 +84,43 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         Intent intent;
+        DialogFragment alert;
         switch (item.getItemId())
         {
             case R.id.editEntity:
-                intent = new Intent(this, editEntity.class);
-                startActivity(intent);
+                alert = new entityEditAlert();
+                alert.show(getSupportFragmentManager(), "edit effect alert");
                 return true;
             case R.id.editEffect:
-                intent = new Intent(this, editEffect.class);
-                startActivity(intent);
+                alert = new entityEditAlert();
+                alert.show(getSupportFragmentManager(), "edit entity alert");
                 return true;
             case R.id.effectList:
                 intent = new Intent(this, effectList.class);
                 startActivity(intent);
                 return true;
+            case R.id.addEntity:
+                alert = new entityAddAlert();
+                alert.show(getSupportFragmentManager(), "add entity alert");
+                intent = new Intent(this, editEntity.class);
+                startActivity(intent);
+                return true;
+            case R.id.addEffect:
+                alert = new effectAddAlert();
+                alert.show(getSupportFragmentManager(), "add effect alert");
+                intent = new Intent(this, editEffect.class);
+                startActivity(intent);
+                return true;
+            case R.id.deleteEntity:
+                alert = new entityDeleteAlert();
+                alert.show(getSupportFragmentManager(), "delete entity alert");
+                return true;
+            case R.id.deleteEffect:
+                alert = new effectDeleteAlert();
+                alert.show(getSupportFragmentManager(), "delete effect alert");
+                return true;
             case R.id.timer:
-                DialogFragment alert = new timerAlert();
+                alert = new timerAlert();
                 alert.show(getSupportFragmentManager(), "timer alert");
                 return true;
         }
@@ -98,8 +130,7 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         DialogFragment alert = new mainViewAlert();
-
-        alert.show(getSupportFragmentManager(), "main alert");
+        alert.show(getSupportFragmentManager(), "main view alert");
     }
 }
 
