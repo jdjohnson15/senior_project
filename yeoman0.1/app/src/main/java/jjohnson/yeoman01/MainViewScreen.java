@@ -81,22 +81,43 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         Intent intent;
+        DialogFragment alert;
         switch (item.getItemId())
         {
             case R.id.editEntity:
-                intent = new Intent(this, editEntity.class);
-                startActivity(intent);
+                alert = new entityEditAlert();
+                alert.show(getSupportFragmentManager(), "edit effect alert");
                 return true;
             case R.id.editEffect:
-                intent = new Intent(this, editEffect.class);
-                startActivity(intent);
+                alert = new entityEditAlert();
+                alert.show(getSupportFragmentManager(), "edit entity alert");
                 return true;
             case R.id.effectList:
                 intent = new Intent(this, effectList.class);
                 startActivity(intent);
                 return true;
+            case R.id.addEntity:
+                alert = new entityAddAlert();
+                alert.show(getSupportFragmentManager(), "add entity alert");
+                intent = new Intent(this, editEntity.class);
+                startActivity(intent);
+                return true;
+            case R.id.addEffect:
+                alert = new effectAddAlert();
+                alert.show(getSupportFragmentManager(), "add effect alert");
+                intent = new Intent(this, editEffect.class);
+                startActivity(intent);
+                return true;
+            case R.id.deleteEntity:
+                alert = new entityDeleteAlert();
+                alert.show(getSupportFragmentManager(), "delete entity alert");
+                return true;
+            case R.id.deleteEffect:
+                alert = new effectDeleteAlert();
+                alert.show(getSupportFragmentManager(), "delete effect alert");
+                return true;
             case R.id.timer:
-                DialogFragment alert = new timerAlert();
+                alert = new timerAlert();
                 alert.show(getSupportFragmentManager(), "timer alert");
                 return true;
         }
@@ -106,8 +127,7 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         DialogFragment alert = new mainViewAlert();
-
-        alert.show(getSupportFragmentManager(), "main alert");
+        alert.show(getSupportFragmentManager(), "main view alert");
     }
 }
 

@@ -8,6 +8,57 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
+<<<<<<< HEAD
+        android:layout_height="match_parent"
+        android:stretchColumns="1"
+        android:id="@+id/tableLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView">
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:text="Open..."
+                android:padding="3dip" />
+            <TextView
+                android:text="Ctrl-O"
+                android:gravity="right"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:text="Save..."
+                android:padding="3dip" />
+            <TextView
+                android:text="Ctrl-S"
+                android:gravity="right"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:text="Save As..."
+                android:padding="3dip" />
+            <TextView
+                android:text="Ctrl-Shift-S"
+                android:gravity="right"
+                android:padding="3dip" />
+        </TableRow>
+
+        <View
+            android:layout_height="2dip"
+            android:background="#FF000000"
+            android:layout_column="1"
+            android:layout_span="2" />
+    </TableLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+=======
+>>>>>>> origin/master
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:weightSum="1">

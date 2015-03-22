@@ -8,12 +8,17 @@
     <string name="main_view_title">Entity List</string>
     <string name="title_activity_edit_entity">editEntity</string>
     <string name="hello_world">Hello world!</string>
-    <string name="edit_Entity">Create Entity</string>
-    <string name="edit_Effect">Create Effect</string>
-    <string name="effect_List">See All Effects</string>
+    <string name="edit_entity">Edit Entity</string>
+    <string name="edit_effect">Edit Effect</string>
+    <string name="effect_list">See All Effects</string>
+    <string name="add_entity">Add Entity</string>
+    <string name="add_effect">Add Effect</string>
+    <string name="delete_entity">Remove Entity</string>
+    <string name="delete_effect">Remove Effect</string>
+    <string name="timer">Next Turn</string>
     <string name="title_activity_edit_effect">editEffect</string>
     <string name="title_activity_effect_list">effectList</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="timer">Next Turn</string>
+
 
 </resources>
