@@ -61,7 +61,9 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
 //        System.out.print(nameList[i]);
 
         //create the adapter for the nameList array
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>		(this,android.R.layout.simple_list_item_1, nameList);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                R.layout.list_item, R.id.name, nameList);
+
 
 
         ListView listView = (ListView) findViewById(R.id.list_view);
