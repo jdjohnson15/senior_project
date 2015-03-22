@@ -29,43 +29,40 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
 
         // Database Stuff
 
+        String[] nameList = new String[50];
+        int j = 0;
+        while (j < 50)
+        {
+                    nameList[j] = " ";
+                    j++;
+        }
+
         SQLiteDatabase yeomanDB = openOrCreateDatabase("Yeoman",MODE_PRIVATE,null);
-        yeomanDB.execSQL("CREATE TABLE IF NOT EXISTS Character(Name VARCHAR,str INT);");
-        yeomanDB.execSQL("INSERT INTO Character VALUES('Kasgar','50');");
+        yeomanDB.execSQL("DROP TABLE Character;");
+        yeomanDB.execSQL("CREATE TABLE IF NOT EXISTS Character(Name VARCHAR,str INT, dex INT, con INT, inte INT, wis INT, cha INT);");
+        yeomanDB.execSQL("INSERT INTO Character VALUES('Kasgar','16','15','15','11','9','10');");
+        yeomanDB.execSQL("INSERT INTO Character VALUES('Elsa','12','14','18','16','14','18');");
 
         Cursor resultSet = yeomanDB.rawQuery("Select Name from Character",null);
+
         resultSet.moveToFirst();
-        String name = resultSet.getString(0);
+//        System.out.print(resultSet.getString(0));
 
+        int i = 1;
+        nameList[0] = resultSet.getString(0);
+        while (resultSet.moveToNext())
+        {
+            nameList[i] = resultSet.getString(0);
+            System.out.println("Name: " + nameList[i]);
+            i++;
+        }
 
-        //array of fake data
+//        nameList[0] = resultSet.getString(0);
+//        System.out.print(nameList[i]);
 
-        String[] fakeData =
-                new String[]{name,
-                            "Sleepy",
-                            "Dopey",
-                            "Grumpy",
-                            "Doc",
-                            "Sneezy",
-                            "Bashful",
-                            "Thorin",
-                            "Fili",
-                            "Kili",
-                            "Balin",
-                            "Dwalin",
-                            "Oin",
-                            "Gloin",
-                            "Dori",
-                            "Nori",
-                            "Ori",
-                            "Bifur",
-                            "Bofur",
-                            "Bombur",
-                            "Dain"};
+        //create the adapter for the nameList array
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>		(this,android.R.layout.simple_list_item_1, nameList);
 
-        //create the adapter for fake data array
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, R.id.name, fakeData);
 
         ListView listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(adapter);
