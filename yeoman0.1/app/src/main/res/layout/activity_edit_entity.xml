@@ -33,38 +33,162 @@
         android:layout_below="@+id/mainViewTitle"
         android:layout_centerHorizontal="true" >
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_contentt"
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/name_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="start"
                 android:text="Name: "
                 android:textSize="20sp"
-                android:layout_gravity="left"
+                android:textColor="#FFFFFFFF"
+                tools:ignore="HardcodedText"/>
+            <TextView
+                android:id="@+id/STR_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="STR: "
+                android:textSize="20sp"
                 android:textColor="#FFFFFFFF"
                 tools:ignore="HardcodedText"
-                android:id="@+id/name_label"
-                />
+                android:layout_marginTop="35dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
+            <TextView
+                android:id="@+id/DEX_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DEX: "
+                android:textSize="20sp"
+                android:textColor="#FFFFFFFF"
+                tools:ignore="HardcodedText"
+                android:layout_marginTop="70dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
+            <TextView
+                android:id="@+id/CON_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CON: "
+                android:textSize="20sp"
+                android:textColor="#FFFFFFFF"
+                tools:ignore="HardcodedText"
+                android:layout_marginTop="105dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
+            <TextView
+                android:id="@+id/INT_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="INT: "
+                android:textSize="20sp"
+                android:textColor="#FFFFFFFF"
+                tools:ignore="HardcodedText"
+                android:layout_marginTop="140dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
+            <TextView
+                android:id="@+id/WIS_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="WIS: "
+                android:textSize="20sp"
+                android:textColor="#FFFFFFFF"
+                tools:ignore="HardcodedText"
+                android:layout_marginTop="175dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
+            <TextView
+                android:id="@+id/CHA_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CHA: "
+                android:textSize="20sp"
+                android:textColor="#FFFFFFFF"
+                tools:ignore="HardcodedText"
+                android:layout_marginTop="210dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
 
             <EditText
-                android:layout_width="54dp"
+                android:id="@+id/name"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/name"
+                android:background="#55FFFFFF"
+                android:textColor="#00000000"
+                android:layout_alignBottom="@+id/name_label"
+                android:layout_toRightOf="@+id/name_label"
+                android:layout_toEndOf="@+id/name_label" />
+
+            <EditText
                 android:id="@+id/STR"
-                />
-            <EditText
-                android:layout_width="fill_parent"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/STR"
+                android:background="#55FFFFFF"
+                android:textColor="#00000000"
+                android:layout_alignBottom="@+id/STR_label"
+                android:layout_toRightOf="@+id/name_label" />
+
+            <EditText
                 android:id="@+id/DEX"
-                />
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:background="#55FFFFFF"
+                android:textColor="#00000000"
+                android:layout_alignTop="@+id/DEX_label"
+                android:layout_alignLeft="@+id/STR"
+                android:layout_alignStart="@+id/STR" />
+
+            <EditText
+                android:id="@+id/CON"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:background="#55FFFFFF"
+                android:textColor="#00000000"
+                android:layout_centerVertical="true"
+                android:layout_alignLeft="@+id/DEX"
+                android:layout_alignStart="@+id/DEX" />
+
+            <EditText
+                android:id="@+id/INT"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:background="#55FFFFFF"
+                android:textColor="#00000000"
+                android:layout_alignBottom="@+id/INT_label"
+                android:layout_alignLeft="@+id/CON"
+                android:layout_alignStart="@+id/CON" />
+
+            <EditText
+                android:id="@+id/WIS"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:background="#55FFFFFF"
+                android:textColor="#00000000"
+                android:layout_alignBottom="@+id/WIS_label"
+                android:layout_alignLeft="@+id/INT"
+                android:layout_alignStart="@+id/INT" />
+
+            <EditText
+                android:id="@+id/CHA"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:background="#55FFFFFF"
+                android:textColor="#00000000"
+                android:layout_alignBottom="@+id/CHA_label"
+                android:layout_alignLeft="@+id/WIS"
+                android:layout_alignStart="@+id/WIS" />
 
 
-        </LinearLayout>
+
+
+
+
+        </RelativeLayout>
 
     </ScrollView>
 
