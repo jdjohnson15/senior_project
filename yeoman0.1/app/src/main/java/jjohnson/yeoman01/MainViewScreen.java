@@ -29,17 +29,17 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
 
         // Database Stuff
 
-        String[] nameList = new String[50];
+        String[] nameList = new String[50]; //////////MAKE DYNAMIC LIST
         int j = 0;
         while (j < 50)
         {
                     nameList[j] = " ";
                     j++;
         }
-/*
+
         SQLiteDatabase yeomanDB = openOrCreateDatabase("Yeoman",MODE_PRIVATE,null);
         yeomanDB.execSQL("DROP TABLE Character;");
-        yeomanDB.execSQL("CREATE TABLE IF NOT EXISTS Character(Name VARCHAR,str INT, dex INT, con INT, inte INT, wis INT, cha INT);");
+        yeomanDB.execSQL("CREATE TABLE IF NOT EXISTS Character(Name VARCHAR PRIMARY KEY,str INT, dex INT, con INT, inte INT, wis INT, cha INT);");
         yeomanDB.execSQL("INSERT INTO Character VALUES('Kasgar','16','15','15','11','9','10');");
         yeomanDB.execSQL("INSERT INTO Character VALUES('Elsa','12','14','18','16','14','18');");
 
@@ -57,10 +57,10 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
             i++;
         }
 
-       nameList[0] = resultSet.getString(0);
-       System.out.print(nameList[i]);
+       //nameList[0] = resultSet.getString(0);
+       //System.out.print(nameList[i]);
 
-*/
+
         String[] fakeData =
                 new String[]{"Happy",
                         "Sleepy",
@@ -85,23 +85,24 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
                         "Dain"};
 
 
-        String[] letters = new String[fakeData.length];
+        String[] letters = new String[nameList.length];
 
-        for (int i = 0; i < fakeData.length; ++i)
+        //this gets the first letter of the names in the list
+        for ( i = 0; i < nameList.length; i++)
         {
-            letters[i] = fakeData[i].substring(0,1);
+            letters[i] = nameList[i].substring(0,1);
         }
 
         //create the adapter for the nameList array
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,
-                R.layout.list_item, R.id.name, fakeData);
+                R.layout.list_item, R.id.name, nameList);
 
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,
+        /*ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,
                 R.layout.list_item, R.id.letter, letters);
-
+*/
         ListView listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(adapter1);
-        listView.setAdapter(adapter2);
+      //  listView.setAdapter(adapter2);
 
 
         listView.setOnItemClickListener(this);

@@ -52,4 +52,22 @@
         android:layout_marginLeft="11dp"
         android:layout_marginStart="11dp" />
 
-</RelativeLayout> 
+    <Button
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:text="X"
+        android:id="@+id/deletebutton"
+        android:layout_alignTop="@+id/editbutton"
+        android:layout_toLeftOf="@+id/editbutton"
+        android:layout_toStartOf="@+id/editbutton" />
+
+    <Button
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:text="E"
+        android:id="@+id/editbutton"
+        android:layout_alignTop="@+id/letter"
+        android:layout_alignRight="@+id/name"
+        android:layout_alignEnd="@+id/name" />
+
+</RelativeLayout>
