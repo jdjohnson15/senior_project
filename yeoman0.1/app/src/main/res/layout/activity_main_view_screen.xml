@@ -6,8 +6,9 @@
     app:parallax_factor="1.9"
     tools:context=".MainActivity" >
 
-    <TableLayout
+    <RelativeLayout
         android:layout_width="match_parent"
+<<<<<<< HEAD
         android:layout_height="match_parent"
         android:stretchColumns="1"
         android:id="@+id/tableLayout"
@@ -49,17 +50,18 @@
 
         <View
             android:layout_height="2dip"
-            android:layout_width="match_parent"
             android:background="#FF000000"
             android:layout_column="1"
             android:layout_span="2" />
-
+    </TableLayout>
 
     <TextView
         android:layout_width="wrap_content"
+=======
+>>>>>>> origin/master
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:weightSum="1" />
+        android:weightSum="1">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -89,8 +91,9 @@
             app:parallax_factor="1.9"
             app:circular_parallax="true"
             tools:context=".MainActivity" />
-    </TableLayout>
 
+
+    </RelativeLayout>
 
 </com.nirhart.parallaxscroll.views.ParallaxScrollView>
 

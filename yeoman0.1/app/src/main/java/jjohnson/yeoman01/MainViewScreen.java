@@ -43,7 +43,7 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
         yeomanDB.execSQL("INSERT INTO Character VALUES('Kasgar','16','15','15','11','9','10');");
         yeomanDB.execSQL("INSERT INTO Character VALUES('Elsa','12','14','18','16','14','18');");
 
-        Cursor resultSet = yeomanDB.rawQuery("Select Name FROM Character",null);
+        Cursor resultSet = yeomanDB.rawQuery("Select Name from Character",null);
 
         resultSet.moveToFirst();
 //        System.out.print(resultSet.getString(0));
