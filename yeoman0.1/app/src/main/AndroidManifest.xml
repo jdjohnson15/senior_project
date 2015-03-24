@@ -40,6 +40,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="jjohnson.yeoman01.MainViewScreen" />
         </activity>
+        <activity
+            android:name=".createEntity"
+            android:label="@string/title_activity_create_entity" >
+        </activity>
     </application>
 
 </manifest>

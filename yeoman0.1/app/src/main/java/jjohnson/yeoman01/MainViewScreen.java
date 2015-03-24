@@ -24,8 +24,7 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_view_screen);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+
 
         // Database Stuff
 
@@ -129,7 +128,7 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
                 startActivity(intent);
                 return true;
             case R.id.addEntity:
-                intent = new Intent(this, editEntity.class);
+                intent = new Intent(this, createEntity.class);
                 startActivity(intent);
                 return true;
             case R.id.addEffect:
