@@ -29,7 +29,7 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
 
         // Database Stuff
 
-        String[] nameList = new String[50];
+        String[] nameList = new String[50]; //////////MAKE DYNAMIC LIST
         int j = 0;
         while (j < 50)
         {
@@ -39,14 +39,14 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
 
         SQLiteDatabase yeomanDB = openOrCreateDatabase("Yeoman",MODE_PRIVATE,null);
         yeomanDB.execSQL("DROP TABLE Character;");
-        yeomanDB.execSQL("CREATE TABLE IF NOT EXISTS Character(Name VARCHAR,str INT, dex INT, con INT, inte INT, wis INT, cha INT);");
+        yeomanDB.execSQL("CREATE TABLE IF NOT EXISTS Character(Name VARCHAR PRIMARY KEY,str INT, dex INT, con INT, inte INT, wis INT, cha INT);");
         yeomanDB.execSQL("INSERT INTO Character VALUES('Kasgar','16','15','15','11','9','10');");
         yeomanDB.execSQL("INSERT INTO Character VALUES('Elsa','12','14','18','16','14','18');");
 
         Cursor resultSet = yeomanDB.rawQuery("Select Name from Character",null);
 
         resultSet.moveToFirst();
-//        System.out.print(resultSet.getString(0));
+        System.out.print(resultSet.getString(0));
 
         int i = 1;
         nameList[0] = resultSet.getString(0);
@@ -57,15 +57,53 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
             i++;
         }
 
-//        nameList[0] = resultSet.getString(0);
-//        System.out.print(nameList[i]);
+       //nameList[0] = resultSet.getString(0);
+       //System.out.print(nameList[i]);
+
+
+        String[] fakeData =
+                new String[]{"Happy",
+                        "Sleepy",
+                        "Dopey",
+                        "Grumpy",
+                        "Doc",
+                        "Sneezy",
+                        "Bashful",
+                        "Thorin",
+                        "Fili",
+                        "Kili",
+                        "Balin",
+                        "Dwalin",
+                        "Oin",
+                        "Gloin",
+                        "Dori",
+                        "Nori",
+                        "Ori",
+                        "Bifur",
+                        "Bofur",
+                        "Bombur",
+                        "Dain"};
+
+
+        String[] letters = new String[nameList.length];
+
+        //this gets the first letter of the names in the list
+        for ( i = 0; i < nameList.length; i++)
+        {
+            letters[i] = nameList[i].substring(0,1);
+        }
 
         //create the adapter for the nameList array
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, nameList);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,
+                R.layout.list_item, R.id.name, nameList);
 
+        /*ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,
+                R.layout.list_item, R.id.letter, letters);
+*/
         ListView listView = (ListView) findViewById(R.id.list_view);
-        listView.setAdapter(adapter);
+        listView.setAdapter(adapter1);
+      //  listView.setAdapter(adapter2);
+
 
         listView.setOnItemClickListener(this);
     }
@@ -97,8 +135,6 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
                 startActivity(intent);
                 return true;
             case R.id.addEntity:
-                alert = new entityAddAlert();
-                alert.show(getSupportFragmentManager(), "add entity alert");
                 intent = new Intent(this, editEntity.class);
                 startActivity(intent);
                 return true;
