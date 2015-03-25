@@ -1,5 +1,6 @@
 package jjohnson.yeoman01;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -19,6 +20,8 @@ public class createEntity extends ActionBarActivity {
     String[] values = new String[18];
 
     EditText name = (EditText) findViewById(R.id.name);
+      //  name.setOnKeyListener(this );
+   // name.setOnKeyListener(this);
     EditText level = (EditText) findViewById(R.id.level);
     EditText STR = (EditText) findViewById(R.id.STR);
     EditText DEX = (EditText) findViewById(R.id.DEX);
@@ -130,27 +133,31 @@ public class createEntity extends ActionBarActivity {
             }
             return false; // pass on to other listeners.
         }
-    */
+*/
     public void commit(View view) {
-        values[0] = name.getText().toString();
-        values[1] = level.getText().toString();
-        values[2] = STR.getText().toString();
-        values[3] = DEX.getText().toString();
-        values[4] = CON.getText().toString();
-        values[5] = INT.getText().toString();
-        values[6] = WIS.getText().toString();
-        values[7] = CHA.getText().toString();
-        values[8] = HP.getText().toString();
-        values[9] = init.getText().toString();
-        values[10] = speed.getText().toString();
-        values[11] = fort.getText().toString();
-        values[12] = reflex.getText().toString();
-        values[13] = will.getText().toString();
-        values[14] = AC.getText().toString();
-        values[15] = flatfoot.getText().toString();
-        values[16] = touch.getText().toString();
-        values[17] = baseattack.getText().toString();
 
+
+        values[0]   = name.getText().toString();
+        values[1]   = level.getText().toString();
+        values[2]   = STR.getText().toString();
+        values[3]   = DEX.getText().toString();
+        values[4]   = CON.getText().toString();
+        values[5]   = INT.getText().toString();
+        values[6]   = WIS.getText().toString();
+        values[7]   = CHA.getText().toString();
+        values[8]   = HP.getText().toString();
+        values[9]   = init.getText().toString();
+        values[10]  = speed.getText().toString();
+        values[11]  = fort.getText().toString();
+        values[12]  = reflex.getText().toString();
+        values[13]  = will.getText().toString();
+        values[14]  = AC.getText().toString();
+        values[15]  = flatfoot.getText().toString();
+        values[16]  = touch.getText().toString();
+        values[17]  = baseattack.getText().toString();
+
+        SQLiteDatabase yeomanDB = openOrCreateDatabase("Yeoman",MODE_PRIVATE,null);
+        yeomanDB.rawQuery("INSERT INTO CHARACTER VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",values);
 
     }
 }
