@@ -20,6 +20,9 @@ import android.widget.ListView;
 
 public class MainViewScreen extends ActionBarActivity implements AdapterView.OnItemClickListener {
 
+    SQLiteDatabase yeomanDB;
+    Cursor resultSet;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,80 +30,13 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
 
 
         // Database Stuff
-
-
-
-        SQLiteDatabase yeomanDB = openOrCreateDatabase("Yeoman",MODE_PRIVATE,null);
-        yeomanDB.execSQL("DROP TABLE Character;");
-        yeomanDB.execSQL("CREATE TABLE IF NOT EXISTS Character(Name VARCHAR PRIMARY KEY, lvl int, str INT, dex INT, con INT, inte INT, wis INT, cha INT, ac int, flat int, touch int, hp int, init int, spd int, fort int, ref int, will int);");
-        Cursor resultSet = yeomanDB.rawQuery("Select Name from Character",null);
-        resultSet.moveToFirst();
-
-
-        if (resultSet.moveToNext()){
-            System.out.print(resultSet.getString(0));
-        }
-
-
-
-        int i = 1;
-
-        while (resultSet.moveToNext())
-        {
-            i++;
-        }
-
-
-        String[] nameList = new String[i]; //////////THIS NEEDS OPTIMIZED
-
-        resultSet.moveToFirst();
-        nameList[0] = resultSet.getString(0);
-
-        i = 1;
-        while (resultSet.moveToNext())
-        {
-            nameList[i] = resultSet.getString(0);
-            System.out.println("Name: " + nameList[i]);
-            i++;
-        }
-
-       //nameList[0] = resultSet.getString(0);
-       //System.out.print(nameList[i]);
-
-
-        String[] fakeData =
-                new String[]{"Happy",
-                        "Sleepy",
-                        "Dopey",
-                        "Grumpy",
-                        "Doc",
-                        "Sneezy",
-                        "Bashful",
-                        "Thorin",
-                        "Fili",
-                        "Kili",
-                        "Balin",
-                        "Dwalin",
-                        "Oin",
-                        "Gloin",
-                        "Dori",
-                        "Nori",
-                        "Ori",
-                        "Bifur",
-                        "Bofur",
-                        "Bombur",
-                        "Dain"};
+        yeomanDB = openOrCreateDatabase("Yeoman",MODE_PRIVATE,null);
+        resultSet = yeomanDB.rawQuery("Select Name from Character",null);
+        yeomanDB.execSQL("CREATE TABLE IF NOT EXISTS Character(Name VARCHAR PRIMARY KEY, lvl int, str INT, dex INT, con INT, inte INT, wis INT, cha INT, ac int, flat int, touch int, hp int, init int, spd int, fort int, ref int, will int, baseattack int);");
 
 
         //create the adapter for the nameList array
-        customListAdapter adapter = new customListAdapter(this, nameList);
 
-        ListView listView = (ListView) findViewById(R.id.list_view);
-        listView.setAdapter(adapter);
-
-
-
-        listView.setOnItemClickListener(this);
     }
 
     @Override
@@ -159,6 +95,49 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         DialogFragment alert = new mainViewAlert();
         alert.show(getSupportFragmentManager(), "main view alert");
+    }
+
+
+    public void refresh (View view){
+        System.out.println("im gonna wreck it");
+        int i = 1;
+        int count = resultSet.getCount();
+        System.out.println("Count: " + count);
+        if (resultSet.getCount() != 0)
+        {
+            System.out.println("hi!");
+            while (resultSet.moveToNext())
+            {
+                i++;
+            }
+
+
+            String[] nameList = new String[i]; //////////THIS NEEDS OPTIMIZED
+
+            resultSet.moveToFirst();
+            nameList[0] = resultSet.getString(0);
+
+            i = 1;
+            while (resultSet.moveToNext())
+            {
+                nameList[i] = resultSet.getString(0);
+                System.out.println("Name: " + nameList[i]);
+                i++;
+            }
+            customListAdapter adapter = new customListAdapter(this, nameList);
+
+            ListView listView = (ListView) findViewById(R.id.list_view);
+            listView.setAdapter(adapter);
+
+
+
+            listView.setOnItemClickListener(this);
+        }
+        else
+        {
+
+        }
+
     }
 }
 

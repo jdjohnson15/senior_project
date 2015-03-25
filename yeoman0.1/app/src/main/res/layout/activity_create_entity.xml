@@ -51,6 +51,7 @@
 
             <EditText
                 android:id="@+id/level"
+                android:inputType="number"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:background="#55FFFFFF"
@@ -152,6 +153,7 @@
 
             <EditText
                 android:id="@+id/STR"
+                android:inputType="number"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:background="#55FFFFFF"
@@ -161,6 +163,7 @@
 
             <EditText
                 android:id="@+id/DEX"
+                android:inputType="number"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:background="#55FFFFFF"
@@ -171,6 +174,7 @@
 
             <EditText
                 android:id="@+id/CON"
+                android:inputType="number"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:background="#55FFFFFF"
@@ -181,6 +185,7 @@
 
             <EditText
                 android:id="@+id/INT"
+                android:inputType="number"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:background="#55FFFFFF"
@@ -191,6 +196,7 @@
 
             <EditText
                 android:id="@+id/WIS"
+                android:inputType="number"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:background="#55FFFFFF"
@@ -201,6 +207,7 @@
 
             <EditText
                 android:id="@+id/CHA"
+                android:inputType="number"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:background="#55FFFFFF"
@@ -224,6 +231,7 @@
 
             <EditText
                 android:id="@+id/HP"
+                android:inputType="number"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:background="#55FFFFFF"
@@ -247,6 +255,7 @@
 
             <EditText
                 android:id="@+id/init"
+                android:inputType="number"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:background="#55FFFFFF"
@@ -270,6 +279,7 @@
 
             <EditText
                 android:id="@+id/speed"
+                android:inputType="number"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:background="#55FFFFFF"
@@ -292,6 +302,7 @@
 
             <EditText
                 android:id="@+id/AC"
+                android:inputType="number"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:background="#55FFFFFF"
@@ -312,6 +323,7 @@
 
             <EditText
                 android:id="@+id/flatfoot"
+                android:inputType="number"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:background="#55FFFFFF"
@@ -331,6 +343,7 @@
 
             <EditText
                 android:id="@+id/touch"
+                android:inputType="number"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:background="#55FFFFFF"
@@ -354,6 +367,7 @@
 
             <EditText
                 android:id="@+id/fort"
+                android:inputType="number"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:background="#55FFFFFF"
@@ -375,6 +389,7 @@
 
             <EditText
                 android:id="@+id/reflex"
+                android:inputType="number"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:background="#55FFFFFF"
@@ -397,6 +412,7 @@
 
             <EditText
                 android:id="@+id/will"
+                android:inputType="number"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:background="#55FFFFFF"
@@ -420,6 +436,7 @@
 
             <EditText
                 android:id="@+id/baseattack"
+                android:inputType="number"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:background="#55FFFFFF"
@@ -427,9 +444,6 @@
                 android:layout_alignTop="@+id/baseattack_label"
                 android:layout_toRightOf="@+id/baseattack_label"
                 android:layout_toEndOf="@+id/baseattack_label" />
-
-
-
 
         </RelativeLayout>
 
@@ -443,4 +457,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:onClick="commit"/>
+
+
 </RelativeLayout>
