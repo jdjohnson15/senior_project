@@ -44,6 +44,14 @@
             android:name=".createEntity"
             android:label="@string/title_activity_create_entity" >
         </activity>
+        <activity
+            android:name=".createEffect"
+            android:label="@string/title_activity_create_effect"
+            android:parentActivityName=".MainViewScreen" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="jjohnson.yeoman01.MainViewScreen" />
+        </activity>
     </application>
 
 </manifest>

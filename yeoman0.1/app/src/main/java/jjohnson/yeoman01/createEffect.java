@@ -4,16 +4,12 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnKeyListener;
-import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
-import android.widget.TextView;
 
 
-//public class createEntity extends ActionBarActivity implements OnKeyListener{
-public class createEntity extends ActionBarActivity {
+public class createEffect extends ActionBarActivity {
+
 
     //EditText[] textFields = new EditText[18];
     String[] values = new String[18];
@@ -42,47 +38,6 @@ public class createEntity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_create_entity);
-
-        //  EditText[] textFields = new EditText[18];
-/*
-        textFields[0] = (EditText) findViewById(R.id.name);
-        textFields[0].setOnKeyListener(this);
-        textFields[1] = (EditText) findViewById(R.id.level);
-        textFields[1].setOnKeyListener(this);
-        textFields[2] = (EditText) findViewById(R.id.STR);
-        textFields[2].setOnKeyListener(this);
-        textFields[3] = (EditText) findViewById(R.id.DEX);
-        textFields[3].setOnKeyListener(this);
-        textFields[4] = (EditText) findViewById(R.id.CON);
-        textFields[4].setOnKeyListener(this);
-        textFields[5] = (EditText) findViewById(R.id.INT);
-        textFields[5].setOnKeyListener(this);
-        textFields[6] = (EditText) findViewById(R.id.WIS);
-        textFields[6].setOnKeyListener(this);
-        textFields[7] = (EditText) findViewById(R.id.CHA);
-        textFields[7].setOnKeyListener(this);
-        textFields[8] = (EditText) findViewById(R.id.HP);
-        textFields[8].setOnKeyListener(this);
-        textFields[9] = (EditText) findViewById(R.id.init);
-        textFields[9].setOnKeyListener(this);
-        textFields[10] = (EditText) findViewById(R.id.speed);
-        textFields[10].setOnKeyListener(this);
-        textFields[11] = (EditText) findViewById(R.id.fort);
-        textFields[11].setOnKeyListener(this);
-        textFields[12] = (EditText) findViewById(R.id.reflex);
-        textFields[12].setOnKeyListener(this);
-        textFields[13] = (EditText) findViewById(R.id.will);
-        textFields[13].setOnKeyListener(this);
-        textFields[14] = (EditText) findViewById(R.id.AC);
-        textFields[14].setOnKeyListener(this);
-        textFields[15] = (EditText) findViewById(R.id.flatfoot);
-        textFields[15].setOnKeyListener(this);
-        textFields[16] = (EditText) findViewById(R.id.touch);
-        textFields[16].setOnKeyListener(this);
-        textFields[17] = (EditText) findViewById(R.id.baseattack);
-        textFields[17].setOnKeyListener(this);
-*/
-
     }
 
 
@@ -154,8 +109,3 @@ public class createEntity extends ActionBarActivity {
 
     }
 }
-
-
-
-
-

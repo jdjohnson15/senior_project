@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="90dp"
         android:gravity="center"
-        android:text="ENTITY BUILDER"
+        android:text="EFFECT BUILDER"
         android:textSize="50sp"
         android:textColor="#FFFFFFFF"
         tools:ignore="HardcodedText"
@@ -427,9 +427,6 @@
                 android:layout_alignTop="@+id/baseattack_label"
                 android:layout_toRightOf="@+id/baseattack_label"
                 android:layout_toEndOf="@+id/baseattack_label" />
-
-
-
 
         </RelativeLayout>
 
