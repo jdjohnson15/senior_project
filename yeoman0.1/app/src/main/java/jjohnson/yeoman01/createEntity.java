@@ -19,12 +19,25 @@ public class createEntity extends ActionBarActivity implements OnKeyListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        System.out.println("HELLO WORLD!!!!!");
         setContentView(R.layout.activity_create_entity);
 
         EditText[] textFields = new EditText[18];
 
         textFields[0] = (EditText) findViewById(R.id.name);
-        textFields[0].setOnKeyListener(this);
+        textFields[0].setOnKeyListener(new OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                if (keyCode == 66) {
+                    EditText foo = (EditText) findViewById(R.id.level);
+                    foo.requestFocus();
+                    return true;
+                }
+                return false;
+            }
+        });
         textFields[1] = (EditText) findViewById(R.id.level);
         textFields[1].setOnKeyListener(this);
         textFields[2] = (EditText) findViewById(R.id.STR);
@@ -93,26 +106,31 @@ public class createEntity extends ActionBarActivity implements OnKeyListener{
 
         EditText myEditText = (EditText) view;
 
-        if (keyCode == EditorInfo.IME_ACTION_SEARCH ||
-                keyCode == EditorInfo.IME_ACTION_DONE ||
-                event.getAction() == KeyEvent.ACTION_DOWN &&
-                        event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-
-            if (!event.isShiftPressed()) {
+        if (keyCode == 66) {
+                int index = 0;
                 int i;
                 int id = view.getId();
                 for (i = 0; i < 18; ++i) {
                     if (id == textFields[i].getId())
-                        break;
+                        index = i;
                 }
-                if ((i+1) > 17)
-                    i = -1;
-                textFields[i + 1].requestFocus();
+                System.out.println("index is " + index);
+                if ((index + 1) > 17)
+                    index = -1;
+                textFields[index + 1].requestFocus();
                 return true;
-            }
-
         }
         return false; // pass on to other listeners.
+    }
 
+    public void printStuff(View view) {
+        String info;
+      //  for (int i = 0; i < 18; i++){
+           // info = textFields[i].getText();
+           // System.out.println(textFields[i].getId() + ": " + info);
+      //  }
+        System.out.println(R.id.name.getText().toString());
     }
 }
+
+
