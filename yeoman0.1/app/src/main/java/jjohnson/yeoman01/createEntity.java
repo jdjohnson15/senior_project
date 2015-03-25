@@ -12,32 +12,41 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 
-public class createEntity extends ActionBarActivity implements OnKeyListener{
+//public class createEntity extends ActionBarActivity implements OnKeyListener{
+public class createEntity extends ActionBarActivity{
 
-    EditText[] textFields = new EditText[18];
+    //EditText[] textFields = new EditText[18];
+    String [] values = new String[18];
+
+    EditText name = (EditText) findViewById(R.id.name);
+    EditText level = (EditText) findViewById(R.id.level);
+    EditText STR = (EditText) findViewById(R.id.STR);
+    EditText DEX = (EditText) findViewById(R.id.DEX);
+    EditText CON = (EditText) findViewById(R.id.CON);
+    EditText INT = (EditText) findViewById(R.id.INT);
+    EditText WIS = (EditText) findViewById(R.id.WIS);
+    EditText CHA = (EditText) findViewById(R.id.CHA);
+    EditText HP = (EditText) findViewById(R.id.HP);
+    EditText init = (EditText) findViewById(R.id.init);
+    EditText speed = (EditText) findViewById(R.id.speed);
+    EditText fort = (EditText) findViewById(R.id.fort);
+    EditText reflex = (EditText) findViewById(R.id.reflex);
+    EditText will = (EditText) findViewById(R.id.will);
+    EditText AC = (EditText) findViewById(R.id.AC);
+    EditText flatfoot = (EditText) findViewById(R.id.flatfoot);
+    EditText touch = (EditText) findViewById(R.id.touch);
+    EditText baseattack = (EditText) findViewById(R.id.baseattack);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        System.out.println("HELLO WORLD!!!!!");
         setContentView(R.layout.activity_create_entity);
 
-        EditText[] textFields = new EditText[18];
-
+      //  EditText[] textFields = new EditText[18];
+/*
         textFields[0] = (EditText) findViewById(R.id.name);
-        textFields[0].setOnKeyListener(new OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-
-                if (keyCode == 66) {
-                    EditText foo = (EditText) findViewById(R.id.level);
-                    foo.requestFocus();
-                    return true;
-                }
-                return false;
-            }
-        });
+        textFields[0].setOnKeyListener(this);
         textFields[1] = (EditText) findViewById(R.id.level);
         textFields[1].setOnKeyListener(this);
         textFields[2] = (EditText) findViewById(R.id.STR);
@@ -72,8 +81,7 @@ public class createEntity extends ActionBarActivity implements OnKeyListener{
         textFields[16].setOnKeyListener(this);
         textFields[17] = (EditText) findViewById(R.id.baseattack);
         textFields[17].setOnKeyListener(this);
-
-
+*/
 
     }
 
@@ -100,7 +108,7 @@ public class createEntity extends ActionBarActivity implements OnKeyListener{
         return super.onOptionsItemSelected(item);
     }
 
-
+/*
     @Override
     public boolean onKey(View view, int keyCode, KeyEvent event) {
 
@@ -122,15 +130,34 @@ public class createEntity extends ActionBarActivity implements OnKeyListener{
         }
         return false; // pass on to other listeners.
     }
-
+*/
     public void printStuff(View view) {
-        String info;
-      //  for (int i = 0; i < 18; i++){
-           // info = textFields[i].getText();
-           // System.out.println(textFields[i].getId() + ": " + info);
-      //  }
-        System.out.println(R.id.name.getText().toString());
+        values[0]   = name.getText().toString();
+        values[1]   = level.getText().toString();
+        values[2]   = STR.getText().toString();
+        values[3]   = DEX.getText().toString();
+        values[4]   = CON.getText().toString();
+        values[5]   = INT.getText().toString();
+        values[6]   = WIS.getText().toString();
+        values[7]   = CHA.getText().toString();
+        values[8]   = HP.getText().toString();
+        values[9]   = init.getText().toString();
+        values[10]  = speed.getText().toString();
+        values[11]  = fort.getText().toString();
+        values[12]  = reflex.getText().toString();
+        values[13]  = will.getText().toString();
+        values[14]  = AC.getText().toString();
+        values[15]  = flatfoot.getText().toString();
+        values[16]  = touch.getText().toString();
+        values[17]  = baseattack.getText().toString();
+
+
     }
+
+
+    public void setSQL
 }
+
+
 
 
