@@ -13,6 +13,7 @@
     <string name="effect_list">See All Effects</string>
     <string name="add_entity">Add Entity</string>
     <string name="add_effect">Add Effect</string>
+    <string name="clear_table">Clear Entity List</string>
     <string name="delete_entity">Remove Entity</string>
     <string name="delete_effect">Remove Effect</string>
     <string name="timer">Next Turn</string>

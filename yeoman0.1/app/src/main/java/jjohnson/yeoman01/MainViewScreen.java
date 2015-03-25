@@ -16,6 +16,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
 
 
 public class MainViewScreen extends ActionBarActivity implements AdapterView.OnItemClickListener {
@@ -26,16 +29,16 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_view_screen);
+//        setContentView(R.layout.activity_main_view_screen);
 
 
         // Database Stuff
         yeomanDB = openOrCreateDatabase("Yeoman",MODE_PRIVATE,null);
-        resultSet = yeomanDB.rawQuery("Select Name from Character",null);
         yeomanDB.execSQL("CREATE TABLE IF NOT EXISTS Character(Name VARCHAR PRIMARY KEY, lvl int, str INT, dex INT, con INT, inte INT, wis INT, cha INT, ac int, flat int, touch int, hp int, init int, spd int, fort int, ref int, will int, baseattack int);");
-
-
+       // yeomanDB.execSQL("CREATE TABLE IF NOT EXISTS    Effect(Name VARCHAR PRIMARY KEY, lvl int, str INT, dex INT, con INT, inte INT, wis INT, cha INT, ac int, flat int, touch int, hp int, init int, spd int, fort int, ref int, will int, baseattack int);");
+        resultSet = yeomanDB.rawQuery("Select Name from Character",null);
         //create the adapter for the nameList array
+       refreshVoid();
 
     }
 
@@ -53,39 +56,27 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
         DialogFragment alert;
         switch (item.getItemId())
         {
-            case R.id.editEntity:
-                alert = new entityEditAlert();
-                alert.show(getSupportFragmentManager(), "edit effect alert");
-                return true;
-            case R.id.editEffect:
-                alert = new entityEditAlert();
-                alert.show(getSupportFragmentManager(), "edit entity alert");
-                return true;
+
             case R.id.effectList:
-                intent = new Intent(this, effectList.class);
-                startActivity(intent);
+                alert = new effectListAlert();
+                alert.show(getSupportFragmentManager(), "effect list alert");
                 return true;
             case R.id.addEntity:
                 intent = new Intent(this, createEntity.class);
                 startActivity(intent);
                 return true;
             case R.id.addEffect:
-                alert = new effectAddAlert();
-                alert.show(getSupportFragmentManager(), "add effect alert");
-                intent = new Intent(this, editEffect.class);
+                intent = new Intent(this, createEffect.class);
                 startActivity(intent);
-                return true;
-            case R.id.deleteEntity:
-                alert = new entityDeleteAlert();
-                alert.show(getSupportFragmentManager(), "delete entity alert");
-                return true;
-            case R.id.deleteEffect:
-                alert = new effectDeleteAlert();
-                alert.show(getSupportFragmentManager(), "delete effect alert");
                 return true;
             case R.id.timer:
                 alert = new timerAlert();
                 alert.show(getSupportFragmentManager(), "timer alert");
+                return true;
+            case R.id.clear:
+                yeomanDB.execSQL("DROP TABLE CHARACTER;");
+                System.out.println("Clear!");
+                refreshVoid();
                 return true;
         }
         return true;
@@ -97,18 +88,22 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
         alert.show(getSupportFragmentManager(), "main view alert");
     }
 
+    public void refreshVoid (){
 
-    public void refresh (View view){
-        System.out.println("im gonna wreck it");
-        int i = 1;
-        int count = resultSet.getCount();
-        System.out.println("Count: " + count);
+        setContentView(R.layout.activity_main_view_screen);
+        yeomanDB.execSQL("CREATE TABLE IF NOT EXISTS Character(Name VARCHAR PRIMARY KEY, lvl int, str INT, dex INT, con INT, inte INT, wis INT, cha INT, ac int, flat int, touch int, hp int, init int, spd int, fort int, ref int, will int, baseattack int);");
+       // yeomanDB.execSQL("CREATE TABLE IF NOT EXISTS Effect(Name VARCHAR PRIMARY KEY, lvl int, str INT, dex INT, con INT, inte INT, wis INT, cha INT, ac int, flat int, touch int, hp int, init int, spd int, fort int, ref int, will int, baseattack int);");
+        resultSet = yeomanDB.rawQuery("Select Name from Character",null);
+
+        int i = 0;
+
         if (resultSet.getCount() != 0)
         {
             System.out.println("hi!");
             while (resultSet.moveToNext())
             {
                 i++;
+                System.out.println("i is : " +i);
             }
 
 
@@ -129,8 +124,6 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
             ListView listView = (ListView) findViewById(R.id.list_view);
             listView.setAdapter(adapter);
 
-
-
             listView.setOnItemClickListener(this);
         }
         else
@@ -138,6 +131,24 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
 
         }
 
+    }
+
+    public void refresh (View view){
+        refreshVoid();
+    }
+
+
+    public void deleteWrapper(View view, SQLiteDatabase yeomanDB){
+        TextView name = (TextView) findViewById(R.id.name);
+
+        String nameString = name.getText().toString();
+        System.out.println("name: " + nameString);
+        yeomanDB.execSQL("DELETE FROM CHARACTER WHERE NAME = ?", new String[]{nameString});
+        refreshVoid();
+    }
+    public void delete(View view) {
+        SQLiteDatabase yeomanDB = openOrCreateDatabase("Yeoman",MODE_PRIVATE,null);
+        deleteWrapper(view, yeomanDB);
     }
 }
 

@@ -1,6 +1,7 @@
 package jjohnson.yeoman01;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -135,9 +136,13 @@ public class createEntity extends ActionBarActivity {
         values[16]  = will.getText().toString();
         values[17]  = baseattack.getText().toString();
 
-        SQLiteDatabase yeomanDB = openOrCreateDatabase("Yeoman",MODE_PRIVATE,null);
-        yeomanDB.rawQuery("INSERT INTO CHARACTER VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?, ?)",values);
+       SQLiteDatabase yeomanDB = openOrCreateDatabase("Yeoman",MODE_PRIVATE,null);
+//        yeomanDB.rawQuery("INSERT INTO CHARACTER VALUES(bobo,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1)");
 
+       yeomanDB.execSQL("INSERT INTO CHARACTER VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?, ?)", new String[] {values[0],values[1],values[2],values[3],values[4],values[5],values[6],values[7],values[8],values[9],values[10],values[11],values[12],values[13],values[14],values[15],values[16],values[17]});
+        Cursor resultSet = yeomanDB.rawQuery("Select Name from Character",null);
+        int count = resultSet.getCount();
+        System.out.println("Count: " + count);
         Intent intent = new Intent(this, MainViewScreen.class);
         startActivity(intent);
     }

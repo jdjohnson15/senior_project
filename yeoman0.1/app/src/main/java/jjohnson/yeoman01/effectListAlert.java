@@ -14,7 +14,7 @@ public class effectListAlert extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceStates){
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setMessage("This action will show you more information about this effect, and give you the option to add it to an entity").setNeutralButton("gotchya", new DialogInterface.OnClickListener() {
+        builder.setMessage("An issue occured with implementing this activity, so it has not been completed").setNeutralButton("laaaaaaaaaame", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 // nothing
             }

@@ -5,19 +5,12 @@ xmlns:tools="http://schemas.android.com/tools" tools:context=".MainViewScreen">
     android:orderInCategory="100" app:showAsAction="never" />
 <item android:id="@+id/addEntity"
     android:title="@string/add_entity"/>
-<item android:id="@+id/editEntity"
-    android:title="@string/edit_entity"/>
-<item android:id="@+id/deleteEntity"
-    android:title="@string/delete_entity"/>
 <item android:id="@+id/addEffect"
     android:title="@string/add_effect"/>
-<item android:id="@+id/editEffect"
-    android:title="@string/edit_effect"/>
-<item android:id="@+id/deleteEffect"
-    android:title="@string/delete_effect"/>
 <item android:id="@+id/effectList"
     android:title="@string/effect_list"/>
 <item android:id="@+id/timer"
     android:title="@string/timer"/>
-
+<item android:id="@+id/clear"
+    android:title="@string/clear_table"/>
 </menu>
