@@ -46,7 +46,8 @@
                 android:text="Level: "
                 android:textSize="20sp"
                 android:layout_marginTop="35dp"
-                android:textColor="#FFFFFFFF"/>
+                android:textColor="#FFFFFFFF"
+                android:singleLine="true"/>
 
             <EditText
                 android:id="@+id/level"
@@ -57,7 +58,8 @@
                 android:layout_alignLeft="@+id/STR"
                 android:layout_alignTop="@+id/level_label"
                 android:layout_toRightOf="@+id/level_label"
-                android:layout_toEndOf="@+id/level_label" />
+                android:layout_toEndOf="@+id/level_label"
+                android:singleLine="true"/>
 
             <!--- main stats -->
             <TextView
@@ -68,7 +70,8 @@
                 android:text="Name: "
                 android:textSize="20sp"
                 android:textColor="#FFFFFFFF"
-                tools:ignore="HardcodedText"/>
+                tools:ignore="HardcodedText"
+                android:singleLine="true"/>
             <TextView
                 android:id="@+id/STR_label"
                 android:layout_width="wrap_content"
@@ -437,5 +440,6 @@
         android:layout_height="wrap_content"
         android:text="COMMIT"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="printStuff"/>
 </RelativeLayout>
