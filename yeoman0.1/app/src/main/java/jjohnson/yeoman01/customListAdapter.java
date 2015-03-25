@@ -20,12 +20,18 @@ public class customListAdapter extends ArrayAdapter<String> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater) context
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(android.R.layout.activity_list_item, parent, false);
-        TextView textView = (TextView) rowView.findViewById(android.R.id.icon);
+
+        LayoutInflater inflater = LayoutInflater.from(getContext());
+
+        View rowView = inflater.inflate(R.layout.list_item, null);
+
+        TextView name = (TextView) rowView.findViewById(R.id.name);
+        TextView letter = (TextView) rowView.findViewById(R.id.letter);
         ImageView imageView = (ImageView) rowView.findViewById(android.R.id.icon);
-        textView.setText(values[position]);
+
+        String letters = values[position].substring(0,1);
+        name.setText(values[position]);
+        letter.setText(letters);
         // change the icon for Windows and iPhone
         String s = values[position];
 

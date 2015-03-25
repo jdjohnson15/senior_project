@@ -24,18 +24,11 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_view_screen);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+
 
         // Database Stuff
 
-        String[] nameList = new String[50]; //////////MAKE DYNAMIC LIST
-        int j = 0;
-        while (j < 50)
-        {
-                    nameList[j] = " ";
-                    j++;
-        }
+
 
         SQLiteDatabase yeomanDB = openOrCreateDatabase("Yeoman",MODE_PRIVATE,null);
         yeomanDB.execSQL("DROP TABLE Character;");
@@ -49,7 +42,19 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
         System.out.print(resultSet.getString(0));
 
         int i = 1;
+
+        while (resultSet.moveToNext())
+        {
+            i++;
+        }
+
+
+        String[] nameList = new String[i]; //////////THIS NEEDS OPTIMIZED
+
+        resultSet.moveToFirst();
         nameList[0] = resultSet.getString(0);
+
+        i = 1;
         while (resultSet.moveToNext())
         {
             nameList[i] = resultSet.getString(0);
@@ -85,24 +90,12 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
                         "Dain"};
 
 
-        String[] letters = new String[nameList.length];
-
-        //this gets the first letter of the names in the list
-        for ( i = 0; i < nameList.length; i++)
-        {
-            letters[i] = nameList[i].substring(0,1);
-        }
-
         //create the adapter for the nameList array
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,
-                R.layout.list_item, R.id.name, nameList);
+        customListAdapter adapter = new customListAdapter(this, nameList);
 
-        /*ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,
-                R.layout.list_item, R.id.letter, letters);
-*/
         ListView listView = (ListView) findViewById(R.id.list_view);
-        listView.setAdapter(adapter1);
-      //  listView.setAdapter(adapter2);
+        listView.setAdapter(adapter);
+
 
 
         listView.setOnItemClickListener(this);
@@ -135,7 +128,7 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
                 startActivity(intent);
                 return true;
             case R.id.addEntity:
-                intent = new Intent(this, editEntity.class);
+                intent = new Intent(this, createEntity.class);
                 startActivity(intent);
                 return true;
             case R.id.addEffect:
