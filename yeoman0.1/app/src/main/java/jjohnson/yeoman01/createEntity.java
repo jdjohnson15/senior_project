@@ -157,7 +157,7 @@ public class createEntity extends ActionBarActivity {
         values[17]  = baseattack.getText().toString();
 
         SQLiteDatabase yeomanDB = openOrCreateDatabase("Yeoman",MODE_PRIVATE,null);
-        yeomanDB.rawQuery("INSERT INTO CHARACTER VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",values);
+        yeomanDB.rawQuery("INSERT INTO CHARACTER VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",values);
 
     }
 }
