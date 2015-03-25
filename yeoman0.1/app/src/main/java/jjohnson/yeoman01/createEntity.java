@@ -1,5 +1,6 @@
 package jjohnson.yeoman01;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -131,7 +132,7 @@ public class createEntity extends ActionBarActivity{
         return false; // pass on to other listeners.
     }
 */
-    public void printStuff(View view) {
+    public void commit(View view) {
         values[0]   = name.getText().toString();
         values[1]   = level.getText().toString();
         values[2]   = STR.getText().toString();
@@ -151,11 +152,11 @@ public class createEntity extends ActionBarActivity{
         values[16]  = touch.getText().toString();
         values[17]  = baseattack.getText().toString();
 
+        SQLiteDatabase yeomanDB = openOrCreateDatabase("Yeoman",MODE_PRIVATE,null);
+        yeomanDB.rawQuery("INSERT INTO CHARACTER VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",values);
+
 
     }
-
-
-    public void setSQL
 }
 
 

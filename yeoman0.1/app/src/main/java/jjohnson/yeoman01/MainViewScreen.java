@@ -32,10 +32,7 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
 
         SQLiteDatabase yeomanDB = openOrCreateDatabase("Yeoman",MODE_PRIVATE,null);
         yeomanDB.execSQL("DROP TABLE Character;");
-        yeomanDB.execSQL("CREATE TABLE IF NOT EXISTS Character(Name VARCHAR PRIMARY KEY,str INT, dex INT, con INT, inte INT, wis INT, cha INT);");
-        yeomanDB.execSQL("INSERT INTO Character VALUES('Kasgar','16','15','15','11','9','10');");
-        yeomanDB.execSQL("INSERT INTO Character VALUES('Elsa','12','14','18','16','14','18');");
-
+        yeomanDB.execSQL("CREATE TABLE IF NOT EXISTS Character(Name VARCHAR PRIMARY KEY, lvl int, str INT, dex INT, con INT, inte INT, wis INT, cha INT, ac int, flat int, touch int, hp int, init int, spd int, fort int, ref int, will int);");
         Cursor resultSet = yeomanDB.rawQuery("Select Name from Character",null);
 
         resultSet.moveToFirst();
