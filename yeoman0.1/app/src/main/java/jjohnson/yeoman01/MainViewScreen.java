@@ -36,66 +36,44 @@ public class MainViewScreen extends ActionBarActivity implements AdapterView.OnI
         Cursor resultSet = yeomanDB.rawQuery("Select Name from Character",null);
 
         resultSet.moveToFirst();
+        int i = 1;
+        if (resultSet.moveToFirst())
+        {
+            while (resultSet.moveToNext())
+            {
+                i++;
+            }
+
+
+            String[] nameList = new String[i]; //////////THIS NEEDS OPTIMIZED
+
+            resultSet.moveToFirst();
+            nameList[0] = resultSet.getString(0);
+
+            i = 1;
+            while (resultSet.moveToNext())
+            {
+                nameList[i] = resultSet.getString(0);
+                System.out.println("Name: " + nameList[i]);
+                i++;
+            }
+            customListAdapter adapter = new customListAdapter(this, nameList);
+
+            ListView listView = (ListView) findViewById(R.id.list_view);
+            listView.setAdapter(adapter);
+
+
+
+            listView.setOnItemClickListener(this);
+        }
+        else
+        {
+
+        }
         System.out.print(resultSet.getString(0));
 
-        int i = 1;
-
-        while (resultSet.moveToNext())
-        {
-            i++;
-        }
-
-
-        String[] nameList = new String[i]; //////////THIS NEEDS OPTIMIZED
-
-        resultSet.moveToFirst();
-        nameList[0] = resultSet.getString(0);
-
-        i = 1;
-        while (resultSet.moveToNext())
-        {
-            nameList[i] = resultSet.getString(0);
-            System.out.println("Name: " + nameList[i]);
-            i++;
-        }
-
-       //nameList[0] = resultSet.getString(0);
-       //System.out.print(nameList[i]);
-
-
-        String[] fakeData =
-                new String[]{"Happy",
-                        "Sleepy",
-                        "Dopey",
-                        "Grumpy",
-                        "Doc",
-                        "Sneezy",
-                        "Bashful",
-                        "Thorin",
-                        "Fili",
-                        "Kili",
-                        "Balin",
-                        "Dwalin",
-                        "Oin",
-                        "Gloin",
-                        "Dori",
-                        "Nori",
-                        "Ori",
-                        "Bifur",
-                        "Bofur",
-                        "Bombur",
-                        "Dain"};
-
-
         //create the adapter for the nameList array
-        customListAdapter adapter = new customListAdapter(this, nameList);
 
-        ListView listView = (ListView) findViewById(R.id.list_view);
-        listView.setAdapter(adapter);
-
-
-
-        listView.setOnItemClickListener(this);
     }
 
     @Override
